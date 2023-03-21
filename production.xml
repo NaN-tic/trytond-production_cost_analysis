@@ -1,0 +1,197 @@
+<?xml version="1.0"?>
+<!-- The COPYRIGHT file at the top level of this repository contains the
+  full copyright notices and license terms. -->
+<tryton>
+    <data>
+        <record model="ir.ui.view" id="production_view_form">
+            <field name="model">production</field>
+            <field name="inherit" ref="production.production_view_form"/>
+            <field name="name">production_form</field>
+        </record>
+
+        <record model="ir.ui.view" id="production_cost_analysis_view_list">
+            <field name="model">production.cost.analysis</field>
+            <field name="type">tree</field>
+            <field name="name">production_cost_analysis_list</field>
+        </record>
+
+      <record model="ir.ui.view" id="production_cost_analysis_view_form">
+          <field name="model">production.cost.analysis</field>
+          <field name="type">form</field>
+          <field name="name">production_cost_analysis_form</field>
+      </record>
+
+      <record model="ir.action.act_window" id="act_production_cost_analysis_list">
+          <field name="name">Productions Costs Analysis</field>
+          <field name="res_model">production.cost.analysis</field>
+          <field name="search_value"></field>
+      </record>
+
+      <menuitem parent="production.menu_production" sequence="10"
+          action="act_production_cost_analysis_list"
+          id="menu_production_cost_base_analisis"/>
+
+      <record model="ir.ui.view" id="production_cost_analysis_move_view_list">
+          <field name="model">production.cost.analysis.move</field>
+          <field name="type">tree</field>
+          <field name="name">production_cost_analysis_move_list</field>
+      </record>
+
+      <record model="ir.ui.view" id="production_cost_analysis_move_view_form">
+          <field name="model">production.cost.analysis.move</field>
+          <field name="type">form</field>
+          <field name="name">production_cost_analysis_move_form</field>
+      </record>
+
+      <record model="ir.ui.view" id="production_cost_analysis_move_deviation_view_list">
+          <field name="model">production.cost.analysis.move.deviation</field>
+          <field name="type">tree</field>
+          <field name="name">production_cost_analysis_move_deviation_list</field>
+      </record>
+
+      <record model="ir.ui.view" id="production_cost_analysis_move_deviation_view_form">
+          <field name="model">production.cost.analysis.move.deviation</field>
+          <field name="type">form</field>
+          <field name="name">production_cost_analysis_move_deviation_form</field>
+      </record>
+
+      <record model="ir.ui.view" id="production_cost_analysis_operation_view_list">
+          <field name="model">production.cost.analysis.operation</field>
+          <field name="type">tree</field>
+          <field name="name">production_cost_analysis_operation_list</field>
+      </record>
+
+      <record model="ir.ui.view" id="production_cost_analysis_operation_view_form">
+          <field name="model">production.cost.analysis.operation</field>
+          <field name="type">form</field>
+          <field name="name">production_cost_analysis_operation_form</field>
+      </record>
+
+      <record model="ir.ui.view" id="production_cost_analysis_deviation_operation_de_view_list">
+          <field name="model">production.cost.analysis.operation.deviation</field>
+          <field name="type">tree</field>
+          <field name="name">production_cost_analysis_operation_deviation_list</field>
+      </record>
+
+      <record model="ir.ui.view" id="production_cost_analysis_operation_deviation_view_form">
+          <field name="model">production.cost.analysis.operation.deviation</field>
+          <field name="type">form</field>
+          <field name="name">production_cost_analysis_operation_deviation_form</field>
+      </record>
+
+     <record model="ir.model.button" id="cost_update_button">
+         <field name="name">update</field>
+         <field name="string">Update</field>
+         <field name="model" search="[('model', '=', 'production.cost.analysis')]"/>
+    </record>
+    <record model="ir.model.button-res.group"
+            id="button_update_group_production_group">
+        <field name="button" ref="cost_update_button"/>
+        <field name="group" ref="production.group_production_admin"/>
+    </record>
+
+    <record model="ir.rule.group" id="rule_group_production_cost_analysis">
+        <field name="name">User in company</field>
+        <field name="model" search="[('model', '=', 'production.cost.analysis')]"/>
+        <field name="global_p" eval="True"/>
+    </record>
+    <record model="ir.rule" id="rule_production_cost_analysis">
+        <field name="domain"
+            eval="[('company', '=', Eval('user', {}).get('company', None))]"
+            pyson="1"/>
+        <field name="rule_group" ref="rule_group_production_cost_analysis"/>
+    </record>
+
+    <record model="ir.model.access" id="access_production_cost_analysis">
+        <field name="model" search="[('model', '=', 'production.cost.analysis')]"/>
+        <field name="perm_read" eval="False"/>
+        <field name="perm_write" eval="False"/>
+        <field name="perm_create" eval="False"/>
+        <field name="perm_delete" eval="False"/>
+    </record>
+    <record model="ir.model.access" id="access_production_cost_analysis_admin">
+        <field name="model" search="[('model', '=', 'production.cost.analysis')]"/>
+        <field name="group" ref="production.group_production"/>
+        <field name="perm_read" eval="True"/>
+        <field name="perm_write" eval="True"/>
+        <field name="perm_create" eval="True"/>
+        <field name="perm_delete" eval="True"/>
+    </record>
+
+    <record model="ir.model.access" id="access_production_cost_analysis_move">
+        <field name="model" search="[('model', '=', 'production.cost.analysis.move')]"/>
+        <field name="perm_read" eval="False"/>
+        <field name="perm_write" eval="False"/>
+        <field name="perm_create" eval="False"/>
+        <field name="perm_delete" eval="False"/>
+    </record>
+    <record model="ir.model.access" id="access_production_cost_analysis_move_admin">
+        <field name="model" search="[('model', '=', 'production.cost.analysis.move')]"/>
+        <field name="group" ref="production.group_production"/>
+        <field name="perm_read" eval="True"/>
+        <field name="perm_write" eval="True"/>
+        <field name="perm_create" eval="True"/>
+        <field name="perm_delete" eval="True"/>
+    </record>
+
+    <record model="ir.model.access" id="access_production_cost_analysis_deviation">
+        <field name="model" search="[('model', '=', 'production.cost.analysis.move.deviation')]"/>
+        <field name="perm_read" eval="False"/>
+        <field name="perm_write" eval="False"/>
+        <field name="perm_create" eval="False"/>
+        <field name="perm_delete" eval="False"/>
+    </record>
+    <record model="ir.model.access" id="access_production_cost_analysis_deviation_admin">
+        <field name="model" search="[('model', '=', 'production.cost.analysis.move.deviation')]"/>
+        <field name="group" ref="production.group_production"/>
+        <field name="perm_read" eval="True"/>
+        <field name="perm_write" eval="True"/>
+        <field name="perm_create" eval="True"/>
+        <field name="perm_delete" eval="True"/>
+    </record>
+
+    <record model="ir.model.access" id="access_production_cost_analysis_operation">
+        <field name="model" search="[('model', '=', 'production.cost.analysis.operation')]"/>
+        <field name="perm_read" eval="False"/>
+        <field name="perm_write" eval="False"/>
+        <field name="perm_create" eval="False"/>
+        <field name="perm_delete" eval="False"/>
+    </record>
+    <record model="ir.model.access" id="access_production_cost_analysis_operation_admin">
+        <field name="model" search="[('model', '=', 'production.cost.analysis.operation')]"/>
+        <field name="group" ref="production.group_production"/>
+        <field name="perm_read" eval="True"/>
+        <field name="perm_write" eval="True"/>
+        <field name="perm_create" eval="True"/>
+        <field name="perm_delete" eval="True"/>
+    </record>
+
+   <record model="ir.model.access" id="access_production_cost_analysis_operation_deviation">
+        <field name="model" search="[('model', '=', 'production.cost.analysis.operation.deviation')]"/>
+        <field name="perm_read" eval="False"/>
+        <field name="perm_write" eval="False"/>
+        <field name="perm_create" eval="False"/>
+        <field name="perm_delete" eval="False"/>
+    </record>
+    <record model="ir.model.access" id="access_production_cost_analysis_operation_deviation_admin">
+        <field name="model" search="[('model', '=', 'production.cost.analysis.operation.deviation')]"/>
+        <field name="group" ref="production.group_production"/>
+        <field name="perm_read" eval="True"/>
+        <field name="perm_write" eval="True"/>
+        <field name="perm_create" eval="True"/>
+        <field name="perm_delete" eval="True"/>
+    </record>
+
+    <record model="ir.rule.group" id="rule_group_production_companies">
+        <field name="name">User in companies</field>
+        <field name="model" search="[('model', '=', 'production.cost.analysis')]"/>
+        <field name="global_p" eval="True"/>
+    </record>
+    <record model="ir.rule" id="rule_production_companies">
+        <field name="domain"
+            eval="[('company', 'in', Eval('companies', []))]"
+            pyson="1"/>
+        <field name="rule_group" ref="rule_group_production_companies"/>
+    </record>
+    </data>
+</tryton>

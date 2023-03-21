@@ -1,0 +1,12 @@
+<?xml version="1.0"?>
+<!-- The COPYRIGHT file at the top level ofthis repository contains the full
+copyright notices and license terms. -->
+<tree>
+    <field name="analysis"/>
+    <field name="operation_type"/>
+    <field name="work_center_category"/>
+    <field name="quantity"/>
+    <field name="uom"/>
+    <field name="total"/>
+    <field name="unit_price"/>
+</tree>

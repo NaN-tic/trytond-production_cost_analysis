@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<!-- The COPYRIGHT file at the top level ofthis repository contains the full
+copyright notices and license terms. -->
+<tree>
+    <field name="number"/>
+    <field name="product"/>
+    <field name="cost_price"/>
+    <field name="gross_margin"/>
+    <field name="gross_teoric_margin"/>
+    <field name="gross_total"/>
+    <field name="gross_teoric_total"/>
+    <field name="price_hour"/>
+    <field name="teoric_price_hour"/>
+    <field name="company"/>
+</tree>

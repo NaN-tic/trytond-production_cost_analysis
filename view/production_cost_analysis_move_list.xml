@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<!-- The COPYRIGHT file at the top level ofthis repository contains the full
+copyright notices and license terms. -->
+<tree>
+    <field name="analysis"/>
+    <field name="product"/>
+    <field name="quantity"/>
+    <field name="type_"/>
+    <field name="kind"/>
+    <field name="uom"/>
+    <field name="cost_price"/>
+    <field name="total"/>
+    <field name="unit_price"/>
+    <field name="stock_move"/>
+</tree>

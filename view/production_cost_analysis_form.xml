@@ -1,0 +1,57 @@
+<?xml version="1.0"?>
+<!-- The COPYRIGHT file at the top level of
+this repository contains the full copyright notices and license terms. -->
+<form>
+    <label name="number"/>
+    <field name="number"/>
+    <label name="company"/>
+    <field name="company"/>
+    <label name="product"/>
+    <field name="product"/>
+    <label name="cost_plan"/>
+    <field name="cost_plan"/>
+    <label name="list_price"/>
+    <field name="list_price"/>
+    <label name="cost_price"/>
+    <field name="cost_price"/>
+    <label name="gross_margin"/>
+    <field name="gross_margin"/>
+    <label name="gross_teoric_margin"/>
+    <field name="gross_teoric_margin"/>
+    <label name="gross_total"/>
+    <field name="gross_total"/>
+    <label name="gross_teoric_total"/>
+    <field name="gross_teoric_total"/>
+    <label name="price_hour"/>
+    <field name="price_hour"/>
+    <label name="teoric_price_hour"/>
+    <field name="teoric_price_hour"/>
+    <notebook>
+        <page name="outputs_costs">
+            <field name="outputs_costs" colspan="4"/>
+            <field name="real_outputs_costs" colspan="4"/>
+            <field name="output_deviation_costs" colspan="4"/>
+            <field name="outputs" colspan="4"/>
+        </page>
+        <page name="inputs_costs">
+            <field name="inputs_costs" colspan="4"/>
+            <field name="real_inputs_costs" colspan="4"/>
+            <field name="input_deviation_costs" colspan="4"/>
+            <field name="inputs" colspan="4"/>
+        </page>
+        <page name="operation_costs">
+            <field name="operation_teoric_costs" colspan="4"/>
+            <field name="operation_real_costs" colspan="4"/>
+            <field name="operation_deviation_costs" colspan="4"/>
+            <field name="operations" colspan="4"/>
+        </page>
+        <page name="productions">
+            <field name="productions" colspan="4"/>
+        </page>
+        <page name="costs">
+            <field name="costs" colspan="4"/>
+            <field name="operation_costs" colspan="4"/>
+        </page>
+    </notebook>
+        <button name="update" colspan="4"/>
+</form>

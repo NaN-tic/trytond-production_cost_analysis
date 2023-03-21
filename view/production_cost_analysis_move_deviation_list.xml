@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<!-- The COPYRIGHT file at the top level ofthis repository contains the full
+copyright notices and license terms. -->
+<tree>
+    <field name="analysis"/>
+    <field name="product"/>
+    <field name="quantity"/>
+    <field name="quantity_deviation"/>
+    <field name="uom"/>
+    <field name="total"/>
+    <field name="total_deviation"/>
+    <field name="unit_price"/>
+    <field name="unit_price_deviation"/>
+</tree>
