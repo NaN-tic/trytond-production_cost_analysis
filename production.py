@@ -276,19 +276,19 @@ class ProductionCostAnalysis(ModelSQL, ModelView):
 
         return res
 
-    def update_output_teoric(self, output_moves):
-        MoveCost = Pool().get('production.cost.analysis.move')
-        to_delete = [x for x in self.costs if x.type_ == 'out'
-            and x.kind == 'teoric' and x.stock_move in output_moves]
-        move_cost = self.get_move_costs(output_moves, 'out', 'teoric')
-        MoveCost.delete(to_delete)
-        MoveCost.save(move_cost)
+    # def update_output_teoric(self, output_moves):
+    #     MoveCost = Pool().get('production.cost.analysis.move')
+    #     to_delete = [x for x in self.costs if x.type_ == 'out'
+    #         and x.kind == 'teoric' and x.stock_move in output_moves]
+    #     move_cost = self.get_move_costs(output_moves, 'out', 'teoric')
+    #     MoveCost.delete(to_delete)
+    #     MoveCost.save(move_cost)
 
     def get_move_costs(self, moves, type_, kind):
         pool = Pool()
         MoveCost = pool.get('production.cost.analysis.move')
         res = dict(((x.stock_move, x.type_, x.kind), x)
-            for x in self.costs if x.stock_move)
+            for x in self.costs if x.stock_move and x.stock_move.state != 'cancelled' )
         result = []
         for move in moves:
             move_cost = res.get((move, type_, kind))
@@ -325,7 +325,8 @@ class ProductionCostAnalysis(ModelSQL, ModelView):
         res = {}
 
         for move in self.costs:
-            if not move.stock_move or move.type_ != type_ or move.kind != kind:
+            if (not move.stock_move or move.type_ != type_ or move.kind != kind
+                    or move.stock_move.state == 'cancelled'):
                 continue
 
             smove = move.stock_move
@@ -484,8 +485,8 @@ class ProductionCostAnalysis(ModelSQL, ModelView):
         for prod in self.productions:
             if prod.state not in ('draft', 'waiting', 'assigned'):
                 continue
-            inputs += prod.inputs
-            outputs += prod.outputs
+            inputs += [x for x in prod.inputs if x.state != 'cancelled']
+            outputs += [x for x in prod.outputs if x.state != 'cancelled']
 
         cost_moves = self.get_move_costs(inputs, 'in', 'teoric')
         cost_moves += self.get_move_costs(outputs, 'out', 'teoric')
@@ -497,8 +498,9 @@ class ProductionCostAnalysis(ModelSQL, ModelView):
         for prod in self.productions:
             if prod.state != 'done':
                 continue
-            inputs += prod.inputs
-            outputs += prod.outputs
+            inputs += [x for x in prod.inputs if x.state != 'cancelled']
+            outputs += [x for x in prod.outputs if x.state != 'cancelled']
+
         cost_moves = self.get_move_costs(inputs, 'in', 'real')
         cost_moves += self.get_move_costs(outputs, 'out', 'real')
         return cost_moves
