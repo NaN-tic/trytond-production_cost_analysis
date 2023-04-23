@@ -1,0 +1,25 @@
+<?xml version="1.0"?>
+<!-- The COPYRIGHT file at the top level ofthis repository contains the full
+copyright notices and license terms. -->
+<form>
+    <label name="analysis"/>
+    <field name="analysis"/>
+    <label name="operation_type"/>
+    <field name="operation_type"/>
+    <label name="work_center_category"/>
+    <field name="work_center_category"/>
+    <label name="quantity"/>
+    <field name="quantity"/>
+    <label name="quantity_deviation"/>
+    <field name="quantity_deviation"/>
+    <label name="uom"/>
+    <field name="uom"/>
+    <label name="total"/>
+    <field name="total"/>
+    <label name="total_deviation"/>
+    <field name="total_deviation"/>
+    <label name="unit_price"/>
+    <field name="unit_price"/>
+    <label name="unit_price_deviation"/>
+    <field name="unit_price_deviation"/>
+</form>

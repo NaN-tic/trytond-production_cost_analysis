@@ -1,0 +1,373 @@
+#
+# Angel Alvarez <angel@nan-tic.com>, 2022.
+msgid ""
+msgstr ""
+"Content-Type: text/plain; charset=UTF-8\n"
+"Last-Translator: Angel Alvarez <angel@nan-tic.com>\n"
+"PO-Revision-Date: 2022-11-09 14:31+0000\n"
+"Project-Id-Version: \n"
+"Language-Team: Catalan <kde-i18n-doc@kde.org>\n"
+"Language: ca\n"
+"Content-Transfer-Encoding: 8bit\n"
+"MIME-Version: 1.0\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: Lokalize 21.12.3\n"
+
+msgctxt "field:production,production_cost_analysis:"
+msgid "Production Cost Analysis"
+msgstr "Análisis de costos de producción"
+
+msgctxt "field:production.cost.analysis,company:"
+msgid "Company"
+msgstr "Compañía"
+
+msgctxt "field:production.cost.analysis,cost_plan:"
+msgid "Cost Plan"
+msgstr "Plan de costos"
+
+msgctxt "field:production.cost.analysis,cost_price:"
+msgid "Cost Price"
+msgstr "Precio de coste"
+
+msgctxt "field:production.cost.analysis,costs:"
+msgid "Cost Moves"
+msgstr "Movimientos de costos"
+
+msgctxt "field:production.cost.analysis,deviation_costs:"
+msgid "Deviation Cost"
+msgstr "Costo de desviación"
+
+msgctxt "field:production.cost.analysis,gross_margin:"
+msgid "Gross Margin"
+msgstr "Margen bruto"
+
+msgctxt "field:production.cost.analysis,gross_teoric_margin:"
+msgid "Teoric Gross Margin"
+msgstr "Margen bruto teórico"
+
+msgctxt "field:production.cost.analysis,gross_teoric_total:"
+msgid "Teoric Gross Total"
+msgstr "Total Bruto Teórico"
+
+msgctxt "field:production.cost.analysis,gross_total:"
+msgid "Gross Total"
+msgstr "Bruto total"
+
+msgctxt "field:production.cost.analysis,input_deviation_costs:"
+msgid "Incoming Deviation Cost"
+msgstr "Costo de desviación de Entradas"
+
+msgctxt "field:production.cost.analysis,inputs:"
+msgid "Inputs"
+msgstr "Entradas"
+
+msgctxt "field:production.cost.analysis,inputs_costs:"
+msgid "Teoric Inputs Costs"
+msgstr "Costos Teóricos de Entradas"
+
+msgctxt "field:production.cost.analysis,list_price:"
+msgid "List Price"
+msgstr "Precio de Venta"
+
+msgctxt "field:production.cost.analysis,number:"
+msgid "Number"
+msgstr "Número"
+
+msgctxt "field:production.cost.analysis,operation_costs:"
+msgid "Operations"
+msgstr "Operaciones"
+
+msgctxt "field:production.cost.analysis,operation_deviation_costs:"
+msgid "Deviation Operations"
+msgstr "Desviación de operaciones "
+
+msgctxt "field:production.cost.analysis,operation_real_costs:"
+msgid "Real Operations"
+msgstr "Operaciones Reales"
+
+msgctxt "field:production.cost.analysis,operation_teoric_costs:"
+msgid "Teoric Operations"
+msgstr "Operaciones teóricas"
+
+msgctxt "field:production.cost.analysis,operations:"
+msgid "Operations"
+msgstr "Operaciones"
+
+msgctxt "field:production.cost.analysis,output_deviation_costs:"
+msgid "Output Deviation Cost"
+msgstr "Costo de desviación de salida"
+
+msgctxt "field:production.cost.analysis,outputs:"
+msgid "Outputs"
+msgstr "Salidas"
+
+msgctxt "field:production.cost.analysis,outputs_costs:"
+msgid "Teoric Output Costs"
+msgstr "Costos de producción teóricos"
+
+msgctxt "field:production.cost.analysis,price_hour:"
+msgid "Price Hour"
+msgstr "Precio Hora"
+
+msgctxt "field:production.cost.analysis,product:"
+msgid "Product"
+msgstr "Producto"
+
+msgctxt "field:production.cost.analysis,productions:"
+msgid "Productions"
+msgstr "Producciones"
+
+msgctxt "field:production.cost.analysis,real_inputs_costs:"
+msgid "Real Inputs Costs"
+msgstr "Costos reales de entradas"
+
+msgctxt "field:production.cost.analysis,real_outputs_costs:"
+msgid "Real Output Costs"
+msgstr "Costos reales de producción"
+
+msgctxt "field:production.cost.analysis,teoric_price_hour:"
+msgid "Teoric Price Hour"
+msgstr "Precio Teórico Hora"
+
+msgctxt "field:production.cost.analysis.move,analysis:"
+msgid "Base Production"
+msgstr "Producción base"
+
+msgctxt "field:production.cost.analysis.move,cost_price:"
+msgid "Cost Price"
+msgstr "Precio de coste"
+
+msgctxt "field:production.cost.analysis.move,kind:"
+msgid "Kind"
+msgstr "Tipo"
+
+msgctxt "field:production.cost.analysis.move,product:"
+msgid "Product"
+msgstr "Producto"
+
+msgctxt "field:production.cost.analysis.move,quantity:"
+msgid "Quantity"
+msgstr "Cantidad"
+
+msgctxt "field:production.cost.analysis.move,stock_move:"
+msgid "Stock Move"
+msgstr "Movimiento de existencias"
+
+msgctxt "field:production.cost.analysis.move,total:"
+msgid "Total"
+msgstr "Total"
+
+msgctxt "field:production.cost.analysis.move,type_:"
+msgid "Type"
+msgstr "Tipo"
+
+msgctxt "field:production.cost.analysis.move,unit_digits:"
+msgid "Unit Digits"
+msgstr "Dígitos de la unidad"
+
+msgctxt "field:production.cost.analysis.move,unit_price:"
+msgid "Unit Price"
+msgstr "Precio unitario"
+
+msgctxt "field:production.cost.analysis.move,uom:"
+msgid "Uom"
+msgstr "unidad de medida"
+
+msgctxt "field:production.cost.analysis.move.deviation,analysis:"
+msgid "Base Production"
+msgstr "Producción Base"
+
+msgctxt "field:production.cost.analysis.move.deviation,product:"
+msgid "Product"
+msgstr "Producto"
+
+msgctxt "field:production.cost.analysis.move.deviation,quantity:"
+msgid "Quantity"
+msgstr "Cantidad"
+
+msgctxt "field:production.cost.analysis.move.deviation,quantity_deviation:"
+msgid "Quantity Deviation"
+msgstr "Desviación de cantidad"
+
+msgctxt "field:production.cost.analysis.move.deviation,total:"
+msgid "Total"
+msgstr "Total"
+
+msgctxt "field:production.cost.analysis.move.deviation,total_deviation:"
+msgid "Total Deviation"
+msgstr "Desviación Total"
+
+msgctxt "field:production.cost.analysis.move.deviation,type_:"
+msgid "Type"
+msgstr "Tipo"
+
+msgctxt "field:production.cost.analysis.move.deviation,unit_digits:"
+msgid "Unit Digits"
+msgstr "Dígitos de la unidad"
+
+msgctxt "field:production.cost.analysis.move.deviation,unit_price:"
+msgid "Unit Price"
+msgstr "Precio unitario"
+
+msgctxt "field:production.cost.analysis.move.deviation,unit_price_deviation:"
+msgid "Unit Price Deviation"
+msgstr "Desviación de precio unitario"
+
+msgctxt "field:production.cost.analysis.move.deviation,uom:"
+msgid "Uom"
+msgstr "unidad de medida"
+
+msgctxt "field:production.cost.analysis.operation,analysis:"
+msgid "Base Production"
+msgstr "Producción básica"
+
+msgctxt "field:production.cost.analysis.operation,kind:"
+msgid "Kind"
+msgstr "Tipo"
+
+msgctxt "field:production.cost.analysis.operation,operation:"
+msgid "Operation"
+msgstr "Operación"
+
+msgctxt "field:production.cost.analysis.operation,operation_type:"
+msgid "Operation Type"
+msgstr "Tipo de operación"
+
+msgctxt "field:production.cost.analysis.operation,quantity:"
+msgid "Quantity"
+msgstr "Cantidad"
+
+msgctxt "field:production.cost.analysis.operation,total:"
+msgid "Total"
+msgstr "Total"
+
+msgctxt "field:production.cost.analysis.operation,unit_digits:"
+msgid "Unit Digits"
+msgstr "Dígitos de la unidad"
+
+msgctxt "field:production.cost.analysis.operation,unit_price:"
+msgid "Unit Price"
+msgstr "Precio unitario"
+
+msgctxt "field:production.cost.analysis.operation,uom:"
+msgid "Uom"
+msgstr "unidad de medida"
+
+msgctxt "field:production.cost.analysis.operation,work_center_category:"
+msgid "Work Center Category"
+msgstr "Categoría de centro de trabajo"
+
+msgctxt "field:production.cost.analysis.operation.deviation,analysis:"
+msgid "Base Production"
+msgstr "Producción básica"
+
+msgctxt "field:production.cost.analysis.operation.deviation,operation_type:"
+msgid "Operation Type"
+msgstr "Tipo de operación"
+
+msgctxt "field:production.cost.analysis.operation.deviation,quantity:"
+msgid "Quantity"
+msgstr "Cantidad"
+
+msgctxt ""
+"field:production.cost.analysis.operation.deviation,quantity_deviation:"
+msgid "Quantity Deviation"
+msgstr "Desviación de cantidad"
+
+msgctxt "field:production.cost.analysis.operation.deviation,total:"
+msgid "Total"
+msgstr "Total"
+
+msgctxt "field:production.cost.analysis.operation.deviation,total_deviation:"
+msgid "Total Deviation"
+msgstr "Desviación total"
+
+msgctxt "field:production.cost.analysis.operation.deviation,unit_digits:"
+msgid "Unit Digits"
+msgstr "Dígitos de la unidad"
+
+msgctxt "field:production.cost.analysis.operation.deviation,unit_price:"
+msgid "Unit Price"
+msgstr "Precio unitario"
+
+msgctxt ""
+"field:production.cost.analysis.operation.deviation,unit_price_deviation:"
+msgid "Unit Price Deviation"
+msgstr "Desviación de precio unitario"
+
+msgctxt "field:production.cost.analysis.operation.deviation,uom:"
+msgid "Uom"
+msgstr "unidad de medida"
+
+msgctxt ""
+"field:production.cost.analysis.operation.deviation,work_center_category:"
+msgid "Work Center Category"
+msgstr "Categoría de centro de trabajo"
+
+msgctxt "model:ir.action,name:act_production_cost_analysis_list"
+msgid "Productions Costs Analysis"
+msgstr "Análisis de Costos de Producción"
+
+msgctxt "model:ir.model.button,string:cost_update_button"
+msgid "Update"
+msgstr "Actualizar"
+
+msgctxt "model:ir.rule.group,name:rule_group_production_cost_analysis"
+msgid "User in company"
+msgstr "Usuario en empresa"
+
+msgctxt "model:ir.ui.menu,name:menu_production_cost_base_analisis"
+msgid "Productions Costs Analysis"
+msgstr "Análisis de Costos de Producción"
+
+msgctxt "model:production.cost.analysis,name:"
+msgid "Production Cost Analysis"
+msgstr "Análisis de costos de producción"
+
+msgctxt "model:production.cost.analysis.move,name:"
+msgid "Production Cost Analysis Move"
+msgstr "Movimiento de análisis de costos de producción"
+
+msgctxt "model:production.cost.analysis.move.deviation,name:"
+msgid "Production Cost Analysis Move deviation"
+msgstr "Análisis de costos de producción Desviación de movimiento"
+
+msgctxt "model:production.cost.analysis.operation,name:"
+msgid "Production Cost Analysis Operation"
+msgstr "Operación de análisis de costos de producción"
+
+msgctxt "model:production.cost.analysis.operation.deviation,name:"
+msgid "Production Cost Analysis Operation Deviation"
+msgstr "Análisis de costos de producción Operación Desviación"
+
+msgctxt "selection:production.cost.analysis.move,kind:"
+msgid "Real"
+msgstr "Real"
+
+msgctxt "selection:production.cost.analysis.move,kind:"
+msgid "Teoric"
+msgstr "teórico"
+
+msgctxt "selection:production.cost.analysis.move,type_:"
+msgid "In"
+msgstr "Entradas"
+
+msgctxt "selection:production.cost.analysis.move,type_:"
+msgid "Out"
+msgstr "Salidas"
+
+msgctxt "selection:production.cost.analysis.move.deviation,type_:"
+msgid "In"
+msgstr "Entradas"
+
+msgctxt "selection:production.cost.analysis.move.deviation,type_:"
+msgid "Out"
+msgstr "Salidas"
+
+msgctxt "selection:production.cost.analysis.operation,kind:"
+msgid "Real"
+msgstr "Real"
+
+msgctxt "selection:production.cost.analysis.operation,kind:"
+msgid "Teoric"
+msgstr "teórico"
