@@ -11,7 +11,6 @@ Imports::
     >>> from trytond.tests.tools import activate_modules
     >>> from trytond.modules.company.tests.tools import create_company, \
     ...     get_company
-    >>> from trytond.modules.production.production import BOM_CHANGES
     >>> today = datetime.date.today()
     >>> yesterday = today - relativedelta(days=1)
     >>> before_yesterday = yesterday - relativedelta(days=1)

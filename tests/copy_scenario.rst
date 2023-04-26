@@ -11,7 +11,6 @@ Imports::
     >>> from trytond.tests.tools import activate_modules
     >>> from trytond.modules.company.tests.tools import create_company, \
     ...     get_company
-    >>> from trytond.modules.production.production import BOM_CHANGES
     >>> today = datetime.date.today()
     >>> yesterday = today - relativedelta(days=1)
     >>> before_yesterday = yesterday - relativedelta(days=1)
@@ -160,7 +159,10 @@ Test reset bom button::
 
     >>> for input in production.inputs:
     ...     input.quantity += 1
-    >>> production.click('reset_bom', change=BOM_CHANGES)
+    >>> production.click('reset_bom',
+    ...     change=[
+    ...         'bom', 'product', 'uom', 'quantity',
+    ...         'inputs', 'outputs', 'company', 'warehouse', 'location'])
     >>> sorted([i.quantity for i in production.inputs]) == [10, 300]
     True
     >>> output, = production.outputs
@@ -170,7 +172,6 @@ Test reset bom button::
 Do the production::
 
     >>> production.click('assign_try')
-    True
     >>> all(i.state == 'assigned' for i in production.inputs)
     True
     >>> production.click('run')
@@ -211,7 +212,6 @@ Make a production with effective date yesterday and running the day before::
     >>> production.quantity = 2
     >>> production.click('wait')
     >>> production.click('assign_try')
-    True
     >>> production.click('run')
     >>> production.reload()
     >>> all(i.effective_date == before_yesterday for i in production.inputs)
