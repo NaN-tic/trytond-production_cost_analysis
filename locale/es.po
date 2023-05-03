@@ -1,17 +1,6 @@
 #
-# Angel Alvarez <angel@nan-tic.com>, 2022.
 msgid ""
-msgstr ""
-"Content-Type: text/plain; charset=UTF-8\n"
-"Last-Translator: Angel Alvarez <angel@nan-tic.com>\n"
-"PO-Revision-Date: 2022-11-09 14:31+0000\n"
-"Project-Id-Version: \n"
-"Language-Team: Catalan <kde-i18n-doc@kde.org>\n"
-"Language: ca\n"
-"Content-Transfer-Encoding: 8bit\n"
-"MIME-Version: 1.0\n"
-"Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Lokalize 21.12.3\n"
+msgstr "Content-Type: text/plain; charset=utf-8\n"
 
 msgctxt "field:production,production_cost_analysis:"
 msgid "Production Cost Analysis"
@@ -308,9 +297,17 @@ msgctxt "model:ir.action,name:act_production_cost_analysis_list"
 msgid "Productions Costs Analysis"
 msgstr "Análisis de Costos de Producción"
 
+msgctxt "model:ir.message,text:msg_teoric_no_unit_price"
+msgid "Product \"%(product)s\" doesn't have unit price."
+msgstr "El producto \"%(product)s\" no tiene precio de venta."
+
 msgctxt "model:ir.model.button,string:cost_update_button"
 msgid "Update"
 msgstr "Actualizar"
+
+msgctxt "model:ir.rule.group,name:rule_group_production_companies"
+msgid "User in companies"
+msgstr "Usuario en las empresas"
 
 msgctxt "model:ir.rule.group,name:rule_group_production_cost_analysis"
 msgid "User in company"
