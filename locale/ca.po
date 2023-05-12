@@ -297,10 +297,6 @@ msgctxt "model:ir.action,name:act_production_cost_analysis_list"
 msgid "Productions Costs Analysis"
 msgstr "Anàlisi de costos de producció"
 
-msgctxt "model:ir.message,text:msg_teoric_no_unit_price"
-msgid "Product \"%(product)s\" doesn't have unit price."
-msgstr "El producte \"%(product)s\" no té preu de venda."
-
 msgctxt "model:ir.model.button,string:cost_update_button"
 msgid "Update"
 msgstr "Actualització"
