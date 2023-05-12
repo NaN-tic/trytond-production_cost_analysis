@@ -562,11 +562,7 @@ class ProductionCostAnalysis(ModelSQL, ModelView):
             dev.quantity_deviation = round(-teoric.quantity, 2)
             dev.total = teoric.total
             dev.total_deviation = -teoric.total
-            if not teoric.unit_price:
-                raise UserError(gettext(
-                    'production_cost_analysis.msg_teoric_no_unit_price',
-                    product=teoric.product.rec_name))
-            dev.unit_price = teoric.unit_price
+            dev.unit_price = (teoric.unit_price or Decimal(0))
             dev.unit_price_deviation = -teoric.unit_price
             dev.uom = teoric.uom
             dev.product = teoric.product
