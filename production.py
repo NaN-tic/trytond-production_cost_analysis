@@ -563,7 +563,7 @@ class ProductionCostAnalysis(ModelSQL, ModelView):
             dev.total = teoric.total
             dev.total_deviation = -teoric.total
             dev.unit_price = (teoric.unit_price or Decimal(0))
-            dev.unit_price_deviation = -teoric.unit_price
+            dev.unit_price_deviation = -(teoric.unit_price or Decimal(0))
             dev.uom = teoric.uom
             dev.product = teoric.product
         elif real and not teoric:
