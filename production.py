@@ -309,12 +309,12 @@ class ProductionCostAnalysis(ModelSQL, ModelView):
             move_cost.type_ = type_
             move_cost.uom = move.product.default_uom
             move_cost.unit_price = move.unit_price or move.product.list_price
-            if type == 'output':
+            if type_ == 'out':
                 product = move.product
                 production = move.production
-                hours = [x.quantity for x in production.operations]
-                move_cost.unit_price = move.quantity * (product.list_price -
-                    product.cost_price) / hours
+                hours = Decimal(sum(x.time for x in production.operations))
+                move_cost.unit_price = Decimal(move.quantity) * (Decimal(product.list_price) -
+                    Decimal(move.cost_price)) / hours
             move_cost.kind = kind
             result.append(move_cost)
         return result
