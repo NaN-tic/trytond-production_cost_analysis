@@ -252,7 +252,7 @@ class ProductionCostAnalysis(ModelSQL, ModelView):
                 for x in cost.real_outputs_costs])  # TODO: compute_qty
             real_output_price = 0
             if real_output_qty:
-                real_output_price = float(sum([float(x.unit_price) * x.quantity
+                real_output_price = float(sum([float(x.cost_price) * x.quantity
                     for x in cost.real_outputs_costs])) / real_output_qty
 
             res['gross_margin'][cost.id] = Decimal(float(cost.list_price or 0)
