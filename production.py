@@ -430,7 +430,7 @@ class ProductionCostAnalysis(ModelSQL, ModelView):
             cost_operations += cost.create_operation_cost_moves('teoric')
             cost_operations += cost.create_operation_cost_moves('real')
             OperationCost.save(cost_operations)
-            cost_moves = cost.calc_teoric_moves()
+            cost_moves += cost.calc_teoric_moves()
             cost_moves += cost.calc_real_moves()
         MoveCost.save(cost_moves)
         cls.update(costs)
