@@ -252,7 +252,7 @@ class ProductionCostAnalysis(ModelSQL, ModelView):
                 for x in cost.real_outputs_costs])  # TODO: compute_qty
             real_output_price = 0
             if real_output_qty:
-                real_output_price = float(sum([float(x.unit_price) * x.quantity
+                real_output_price = float(sum([float(x.cost_price) * x.quantity
                     for x in cost.real_outputs_costs])) / real_output_qty
 
             res['gross_margin'][cost.id] = Decimal(float(cost.list_price or 0)
@@ -309,12 +309,20 @@ class ProductionCostAnalysis(ModelSQL, ModelView):
             move_cost.type_ = type_
             move_cost.uom = move.product.default_uom
             move_cost.unit_price = move.unit_price or move.product.list_price
-            if type == 'output':
-                product = move.product
-                production = move.production
-                hours = [x.quantity for x in production.operations]
-                move_cost.unit_price = move.quantity * (product.list_price -
-                    product.cost_price) / hours
+            if type_ == 'out':
+                hours = None
+                if kind == 'teoric':
+                    hours = Decimal(sum(x.quantity for x in self.operation_costs
+                        if x.kind == 'teoric'))
+                if kind == 'real':
+                    hours = Decimal(sum(x.quantity for x in self.operation_costs
+                        if x.kind == 'real'))
+                if hours:
+                    product = move.product
+                    move_cost.unit_price = Decimal(
+                        Decimal(move.quantity) * (Decimal(product.list_price) -
+                        Decimal(move.cost_price)) / hours).quantize(
+                            Decimal(10) ** -price_digits[1])
             move_cost.kind = kind
             result.append(move_cost)
         return result
@@ -418,12 +426,13 @@ class ProductionCostAnalysis(ModelSQL, ModelView):
         cost_moves = []
 
         for cost in costs:
-            cost_moves = cost.calc_teoric_moves()
-            cost_moves += cost.calc_real_moves()
+            cost_operations = []
             cost_operations += cost.create_operation_cost_moves('teoric')
             cost_operations += cost.create_operation_cost_moves('real')
+            OperationCost.save(cost_operations)
+            cost_moves += cost.calc_teoric_moves()
+            cost_moves += cost.calc_real_moves()
         MoveCost.save(cost_moves)
-        OperationCost.save(cost_operations)
         cls.update(costs)
 
     def create_operation_cost_moves(self, kind):
