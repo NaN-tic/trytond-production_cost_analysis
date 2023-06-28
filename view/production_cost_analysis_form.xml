@@ -48,10 +48,5 @@ this repository contains the full copyright notices and license terms. -->
         <page name="productions">
             <field name="productions" colspan="4"/>
         </page>
-        <page name="costs">
-            <field name="costs" colspan="4"/>
-            <field name="operation_costs" colspan="4"/>
-        </page>
     </notebook>
-        <button name="update" colspan="4"/>
 </form>
