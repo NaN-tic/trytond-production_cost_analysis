@@ -156,7 +156,7 @@ msgstr "Dígits de la unitat"
 
 msgctxt "field:production.cost.analysis.move,unit_price:"
 msgid "Unit Price"
-msgstr "Preu unitari"
+msgstr "Cost unitari"
 
 msgctxt "field:production.cost.analysis.move,uom:"
 msgid "Uom"
@@ -196,11 +196,11 @@ msgstr "Dígits de la unitat"
 
 msgctxt "field:production.cost.analysis.move.deviation,unit_price:"
 msgid "Unit Price"
-msgstr "Preu unitari"
+msgstr "Cost unitari"
 
 msgctxt "field:production.cost.analysis.move.deviation,unit_price_deviation:"
 msgid "Unit Price Deviation"
-msgstr "Desviació del preu unitari"
+msgstr "Desviació del cost unitari"
 
 msgctxt "field:production.cost.analysis.move.deviation,uom:"
 msgid "Uom"
@@ -236,7 +236,7 @@ msgstr "Dígits de la unitat"
 
 msgctxt "field:production.cost.analysis.operation,unit_price:"
 msgid "Unit Price"
-msgstr "Preu unitari"
+msgstr "Cost unitari"
 
 msgctxt "field:production.cost.analysis.operation,uom:"
 msgid "Uom"
@@ -277,12 +277,12 @@ msgstr "Dígits de la unitat"
 
 msgctxt "field:production.cost.analysis.operation.deviation,unit_price:"
 msgid "Unit Price"
-msgstr "Preu unitari"
+msgstr "Cost unitari"
 
 msgctxt ""
 "field:production.cost.analysis.operation.deviation,unit_price_deviation:"
 msgid "Unit Price Deviation"
-msgstr "Desviació del preu unitari"
+msgstr "Desviació del cost unitari"
 
 msgctxt "field:production.cost.analysis.operation.deviation,uom:"
 msgid "Uom"
