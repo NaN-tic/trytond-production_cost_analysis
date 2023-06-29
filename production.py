@@ -320,8 +320,9 @@ class ProductionCostAnalysis(ModelSQL, ModelView):
                 if hours:
                     product = move.product
                     move_cost.unit_price = Decimal(
-                        Decimal(move.quantity) * (Decimal(product.list_price) -
-                        Decimal(move.cost_price)) / hours).quantize(
+                        Decimal(move.quantity or 0) * (
+                            Decimal(product.list_price or 0) -
+                            Decimal(move.cost_price or 0)) / hours).quantize(
                             Decimal(10) ** -price_digits[1])
             move_cost.kind = kind
             result.append(move_cost)
