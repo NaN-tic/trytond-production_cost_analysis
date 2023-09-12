@@ -289,8 +289,10 @@ class ProductionCostAnalysis(ModelSQL, ModelView):
     def get_move_costs(self, moves, type_, kind):
         pool = Pool()
         MoveCost = pool.get('production.cost.analysis.move')
+
         res = dict(((x.stock_move, x.type_, x.kind), x)
             for x in self.costs if x.stock_move and x.stock_move.state != 'cancelled' )
+
         result = []
         for move in moves:
             move_cost = res.get((move, type_, kind))
@@ -331,10 +333,11 @@ class ProductionCostAnalysis(ModelSQL, ModelView):
     def calc_group(self, type_, kind):
         pool = Pool()
         MoveCost = pool.get('production.cost.analysis.move')
+
         to_delete = [x for x in self.costs if not x.stock_move
             and x.type_ == type_ and x.kind == kind]
-        res = {}
 
+        res = {}
         for move in self.costs:
             if (not move.stock_move or move.type_ != type_ or move.kind != kind
                     or move.stock_move.state == 'cancelled'):
@@ -380,14 +383,17 @@ class ProductionCostAnalysis(ModelSQL, ModelView):
                                 Decimal(10) ** -price_digits[1])
                 move_cost.total += move.total
 
+        to_delete_ids = [t.id for t in to_delete]
         MoveCost.delete(to_delete)
-        return res.values()
+        return res.values(), to_delete_ids
 
     def calc_group_operation(self, kind):
         pool = Pool()
         OperationCost = pool.get('production.cost.analysis.operation')
+
         to_delete = [x for x in self.operation_costs if not x.operation
             and x.kind == kind]
+
         res = {}
         for op in self.operation_costs:
             if not op.operation or op.kind != kind:
@@ -416,16 +422,17 @@ class ProductionCostAnalysis(ModelSQL, ModelView):
                 op_cost.quantity = round(op_cost.quantity + op.quantity, 2)
                 op_cost.total += op.total
 
+        to_delete_ids = [t.id for t in to_delete]
         OperationCost.delete(to_delete)
-        return res.values()
+        return res.values(), to_delete_ids
 
     @classmethod
     def create_cost_moves(cls, costs):
         MoveCost = Pool().get('production.cost.analysis.move')
         OperationCost = Pool().get('production.cost.analysis.operation')
+
         cost_operations = []
         cost_moves = []
-
         for cost in costs:
             cost_operations = []
             cost_operations += cost.create_operation_cost_moves('teoric')
@@ -438,6 +445,7 @@ class ProductionCostAnalysis(ModelSQL, ModelView):
 
     def create_operation_cost_moves(self, kind):
         OperationCost = Pool().get('production.cost.analysis.operation')
+
         res = []
         productions = []
         if kind == 'teoric':
@@ -447,6 +455,7 @@ class ProductionCostAnalysis(ModelSQL, ModelView):
             productions = [x for x in self.productions if x.state == 'done']
         else:
             return []
+
         costs = [x for x in self.operation_costs if x.kind == kind]
         operations = [x.operation for x in costs]
         for prod in productions:
@@ -474,21 +483,28 @@ class ProductionCostAnalysis(ModelSQL, ModelView):
     def update(cls, costs):
         MoveCost = Pool().get('production.cost.analysis.move')
         OperationCost = Pool().get('production.cost.analysis.operation')
+
         cost_groups = []
         cost_operations = []
-
+        cost_to_deleted = []
         for cost in costs:
-            cost_groups += cost.calc_group('in', 'teoric')
-            cost_groups += cost.calc_group('out', 'teoric')
-            cost_groups += cost.calc_group('in', 'real')
-            cost_groups += cost.calc_group('out', 'real')
-            cost_operations += cost.calc_group_operation('teoric')
-            cost_operations += cost.calc_group_operation('real')
+            for type, kind in (('in', 'teoric'), ('out', 'teoric'), ('in', 'real'), ('out', 'real')):
+                c_groups, to_delete = cost.calc_group(type, kind)
+                cost_groups += c_groups
+                cost_to_deleted += to_delete
+            for kind in ('teoric', 'real'):
+                c_operations, to_delete = cost.calc_group_operation(kind)
+                cost_operations += c_operations
+                cost_to_deleted += to_delete
+
         MoveCost.save(cost_groups)
         OperationCost.save(cost_operations)
-        for cost in costs:
-            cost.calc_deviation()
 
+        # calc deviation in case cost has not deleted
+        for cost in costs:
+            if cost.id in cost_to_deleted:
+                continue
+            cost.calc_deviation()
 
     def calc_teoric_moves(self):
         inputs = []
@@ -606,6 +622,7 @@ class ProductionCostAnalysis(ModelSQL, ModelView):
         pool = Pool()
         MoveCostDev = pool.get('production.cost.analysis.move.deviation')
         OpCostDev = pool.get('production.cost.analysis.operation.deviation')
+
         to_delete = [x for x in self.deviation_costs]
         to_delete_operation = [x for x in self.operation_deviation_costs]
 
