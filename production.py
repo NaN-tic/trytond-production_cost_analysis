@@ -337,7 +337,7 @@ class ProductionCostAnalysis(ModelSQL, ModelView):
 
         for move in self.costs:
             if (not move.stock_move or move.type_ != type_ or move.kind != kind
-                    or move.stock_move.state == 'cancelled'):
+                    or move.stock_move.state == 'cancelled' and not move.quantity):
                 continue
 
             smove = move.stock_move
@@ -390,7 +390,7 @@ class ProductionCostAnalysis(ModelSQL, ModelView):
             and x.kind == kind]
         res = {}
         for op in self.operation_costs:
-            if not op.operation or op.kind != kind:
+            if not op.operation or op.kind != kind or not op.quantity:
                 continue
 
             key = (op.operation_type, op.work_center_category)
