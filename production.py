@@ -366,17 +366,22 @@ class ProductionCostAnalysis(ModelSQL, ModelView):
                 move_cost.total = move.total
                 res[move.product] = move_cost
             else:
-                move_cost.cost_price = Decimal(
-                    (float(move.cost_price) * move.quantity
-                    + float(move_cost.cost_price) * move_cost.quantity) / (
-                        move.quantity + move_cost.quantity)).quantize(
-                            Decimal(10) ** -price_digits[1])
+                total_quantity = move.quantity + move_cost.quantity
+                if total_quantity > 0:
+                    cost_price = Decimal(
+                        (float(move.cost_price) * move.quantity
+                        + float(move_cost.cost_price) * move_cost.quantity) / (
+                            total_quantity)).quantize(
+                                Decimal(10) ** -price_digits[1])
+                else:
+                    cost_price = Decimal(0)
+                move_cost.cost_price = cost_price
                 move_cost.quantity = round(move_cost.quantity + move.quantity, 2)
-                if move_cost.quantity + move.quantity != 0:
+                if total_quantity != 0:
                     move_cost.unit_price = Decimal((
                         float(move.unit_price) * move.quantity +
                         float(move_cost.unit_price) * move_cost.quantity) / (
-                            move_cost.quantity + move.quantity)).quantize(
+                            total_quantity)).quantize(
                                 Decimal(10) ** -price_digits[1])
                 move_cost.total += move.total
 
@@ -407,12 +412,13 @@ class ProductionCostAnalysis(ModelSQL, ModelView):
                 res[key] = op_cost
             else:
                 qty = op.quantity + op_cost.quantity
-                if not qty:
-                    op_cost.unit_price = 0
-                else:
-                    op_cost.unit_price = Decimal(
+                if qty:
+                    unit_price = Decimal(
                         float(op.total + op_cost.total) / qty).quantize(
                             Decimal(10) ** -price_digits[1])
+                else:
+                    unit_price = Decimal(0)
+                op_cost.unit_price = unit_price
                 op_cost.quantity = round(op_cost.quantity + op.quantity, 2)
                 op_cost.total += op.total
 
