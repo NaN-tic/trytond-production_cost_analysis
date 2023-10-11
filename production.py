@@ -6,8 +6,6 @@ from trytond.pool import Pool, PoolMeta
 from trytond.modules.product import price_digits
 from trytond.pyson import Eval
 from trytond.transaction import Transaction
-from trytond.exceptions import UserError
-from trytond.i18n import gettext
 
 
 class Production(metaclass=PoolMeta):
