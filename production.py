@@ -378,7 +378,7 @@ class ProductionCostAnalysis(ModelSQL, ModelView):
                 if total_quantity != 0:
                     move_cost.unit_price = Decimal((
                         float(move.unit_price or 0) * move.quantity +
-                        float(move_cost.unit_price) * move_cost.quantity) / (
+                        float(move_cost.unit_price or 0) * move_cost.quantity) / (
                             total_quantity)).quantize(
                                 Decimal(10) ** -price_digits[1])
                 move_cost.total += move.total
