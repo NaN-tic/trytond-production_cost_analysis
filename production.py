@@ -6,8 +6,6 @@ from trytond.pool import Pool, PoolMeta
 from trytond.modules.product import price_digits
 from trytond.pyson import Eval
 from trytond.transaction import Transaction
-from trytond.exceptions import UserError
-from trytond.i18n import gettext
 
 
 class Production(metaclass=PoolMeta):
@@ -588,7 +586,7 @@ class ProductionCostAnalysis(ModelSQL, ModelView):
             dev.total = 0
             dev.total_deviation = real.total
             dev.unit_price = 0
-            dev.unit_price_deviation = real.unit_price
+            dev.unit_price_deviation = real.unit_price or Decimal(0)
             dev.uom = real.uom
             dev.product = real.product
         else:
@@ -600,11 +598,12 @@ class ProductionCostAnalysis(ModelSQL, ModelView):
             dev.total_deviation = Decimal(real.total - teoric.total).quantize(
                 Decimal(10) ** -price_digits[1])
             dev.unit_price = teoric.unit_price
-            dev.unit_price_deviation = real.unit_price - teoric.unit_price
+            dev.unit_price_deviation = (
+                (real.unit_price or Decimal(0)) - (teoric.unit_price or Decimal(0)))
 
         if (dev.total_deviation == 0 and dev.quantity_deviation == 0 and
                 dev.unit_price_deviation == 0):
-            return None
+            return
 
         return dev
 
