@@ -690,7 +690,7 @@ class ProductionCostAnalysisMove(ModelSQL, ModelView):
     unit_digits = fields.Function(fields.Integer('Unit Digits'),
         'on_change_with_unit_digits')
     quantity = fields.Float('Quantity', digits=(16, Eval('unit_digits', 2)),
-        required=True, readonly=True, depends=['unit_digits'])
+        required=True, readonly=True)
     uom = fields.Many2One('product.uom', 'Uom', required=True)
     cost_price = fields.Numeric('Cost Price', digits=price_digits,
         readonly=True)
@@ -720,7 +720,7 @@ class ProductionCostAnalysisMoveDeviation(ModelSQL, ModelView):
     unit_digits = fields.Function(fields.Integer('Unit Digits'),
         'on_change_with_unit_digits')
     quantity = fields.Float('Quantity', digits=(16, Eval('unit_digits', 2)),
-        required=True, readonly=True, depends=['unit_digits'])
+        required=True, readonly=True)
     quantity_deviation = fields.Float('Quantity Deviation',
         digits=(16, Eval('unit_digits', 2)), required=True, readonly=True,
         depends=['unit_digits'])
@@ -755,7 +755,7 @@ class ProductionCostAnalysisOperation(ModelSQL, ModelView):
     unit_digits = fields.Function(fields.Integer('Unit Digits'),
         'on_change_with_unit_digits')
     quantity = fields.Float('Quantity', digits=(16, Eval('unit_digits', 2)),
-        required=True, readonly=True, depends=['unit_digits'])
+        required=True, readonly=True)
     total = fields.Numeric('Total', digits=price_digits,
         readonly=True)
     unit_price = fields.Numeric('Unit Price', digits=price_digits,
@@ -785,7 +785,7 @@ class ProductionCostAnalysisOperationDeviation(ModelSQL, ModelView):
     unit_digits = fields.Function(fields.Integer('Unit Digits'),
         'on_change_with_unit_digits')
     quantity = fields.Float('Quantity', digits=(16, Eval('unit_digits', 2)),
-        required=True, readonly=True, depends=['unit_digits'])
+        required=True, readonly=True)
     quantity_deviation = fields.Float('Quantity Deviation',
         digits=(16, Eval('unit_digits', 2)), required=True, readonly=True,
         depends=['unit_digits'])
