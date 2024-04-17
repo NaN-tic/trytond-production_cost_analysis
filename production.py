@@ -46,8 +46,8 @@ class Production(metaclass=PoolMeta):
         CostAnalysis.create_cost_moves(costs)
 
     @classmethod
-    def done(cls, productions):
-        super().done(productions)
+    def do(cls, productions):
+        super().do(productions)
         costanalysis = Pool().get('production.cost.analysis')
         costs = set([x.production_cost_analysis for x in productions
             if x.production_cost_analysis])
