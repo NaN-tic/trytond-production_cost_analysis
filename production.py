@@ -26,7 +26,7 @@ class Production(metaclass=PoolMeta):
         cost.outputs_costs = []
         cost.product = self.product
         cost.cost_plan = self.cost_plan
-        cost.list_price = self.product.list_price or 0
+        cost.list_price = self.product and self.product.list_price or 0
         cost.cost_price = (self.cost_plan and self.cost_plan.cost_price
             or self.product.cost_price or 0)
         return cost
