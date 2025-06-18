@@ -10,8 +10,8 @@ from configparser import ConfigParser
 MODULE = 'production_cost_analysis'
 PREFIX = 'nantic'
 MODULE2PREFIX = {
-    'production_operation',
-    'sale_cost_plan',
+    'production_operation': 'nantic',
+    'sale_cost_plan': 'nantic',
 }
 
 
@@ -80,7 +80,7 @@ setup(name='%s_%s' % (PREFIX, MODULE),
         ],
     package_data={
         'trytond.modules.%s' % MODULE: (info.get('xml', [])
-            + ['tryton.cfg', 'locale/*.po', 'tests/*.rst']),
+            + ['tryton.cfg', 'view/*.xml', 'locale/*.po', 'tests/*.rst']),
         },
     classifiers=[
         'Development Status :: 5 - Production/Stable',
