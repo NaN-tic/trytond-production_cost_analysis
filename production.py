@@ -148,10 +148,10 @@ class ProductionCostAnalysis(ModelSQL, ModelView):
     operation_costs = fields.One2Many('production.cost.analysis.operation',
         'analysis', 'Operations')
     operation_teoric_costs = fields.Function(
-        fields.One2Many('production.cost.analysis.operation',
+        fields.Many2Many('production.cost.analysis.operation', None,
         None, 'Teoric Operations'), 'on_change_with_operation_teoric_costs')
     operation_real_costs = fields.Function(
-            fields.One2Many('production.cost.analysis.operation',
+            fields.Many2Many('production.cost.analysis.operation', None,
         None, 'Real Operations'), 'on_change_with_operation_real_costs')
     operation_deviation_costs = fields.One2Many(
         'production.cost.analysis.operation.deviation',
