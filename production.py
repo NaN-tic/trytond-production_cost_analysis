@@ -115,29 +115,29 @@ class ProductionCostAnalysis(ModelSQL, ModelView):
         'Price Hour', digits=price_digits), 'get_calc_fields')
     teoric_price_hour = fields.Function(fields.Numeric(
         'Teoric Price Hour', digits=price_digits), 'get_calc_fields')
-    outputs_costs = fields.Function(fields.Many2Many(
+    outputs_costs = fields.Function(fields.One2Many(
         'production.cost.analysis.move', None, 'Teoric Output Costs',
         domain=[('type_', '=', 'out'), ('kind', '=', 'teoric')]),
         'on_change_with_outputs_costs')
-    real_outputs_costs = fields.Function(fields.Many2Many(
+    real_outputs_costs = fields.Function(fields.One2Many(
         'production.cost.analysis.move', None, 'Real Output Costs',
         domain=[('type_', '=', 'out'), ('kind', '=', 'real')]),
         'on_change_with_real_outputs_costs', )
-    inputs_costs = fields.Function(fields.Many2Many(
+    inputs_costs = fields.Function(fields.One2Many(
         'production.cost.analysis.move', None, 'Teoric Inputs Costs'),
         'on_change_with_inputs_costs')
-    real_inputs_costs = fields.Function(fields.Many2Many(
+    real_inputs_costs = fields.Function(fields.One2Many(
         'production.cost.analysis.move', None, 'Real Inputs Costs',
         domain=[('type_', '=', 'in'), ('kind', '=', 'real')]),
         'on_change_with_real_inputs_costs')
     costs = fields.One2Many('production.cost.analysis.move',
         'analysis', 'Cost Moves')
-    output_deviation_costs = fields.Function(fields.Many2Many(
+    output_deviation_costs = fields.Function(fields.One2Many(
         'production.cost.analysis.move.deviation', None,
         'Output Deviation Cost',
         domain=[('type_', '=', 'out')]),
         'on_change_with_output_deviation_costs')
-    input_deviation_costs = fields.Function(fields.Many2Many(
+    input_deviation_costs = fields.Function(fields.One2Many(
         'production.cost.analysis.move.deviation', None,
         'Incoming Deviation Cost',
         domain=[('type_', '=', 'in')]),
@@ -156,11 +156,11 @@ class ProductionCostAnalysis(ModelSQL, ModelView):
     operation_deviation_costs = fields.One2Many(
         'production.cost.analysis.operation.deviation',
         'analysis', 'Deviation Operations')
-    inputs = fields.Function(fields.Many2Many('stock.move', None, 'Inputs'),
+    inputs = fields.Function(fields.One2Many('stock.move', None, 'Inputs'),
         'get_inputs')
-    outputs = fields.Function(fields.Many2Many('stock.move', None, 'Outputs'),
+    outputs = fields.Function(fields.One2Many('stock.move', None, 'Outputs'),
         'get_outputs')
-    operations = fields.Function(fields.Many2Many('production.operation', None,
+    operations = fields.Function(fields.One2Many('production.operation', None,
         'Operations'), 'get_operations')
     productions = fields.One2Many('production',
         'production_cost_analysis', 'Productions')
