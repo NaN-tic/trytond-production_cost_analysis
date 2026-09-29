@@ -5,7 +5,7 @@ from trytond.model import ModelView, ModelSQL, fields
 from trytond.pool import Pool, PoolMeta
 from trytond.modules.product import price_digits
 from trytond.pyson import Eval
-from trytond.transaction import Transaction
+from trytond.transaction import Transaction, without_check_access
 
 
 class Production(metaclass=PoolMeta):
@@ -75,11 +75,13 @@ class Production(metaclass=PoolMeta):
         if not self.production_cost_analysis:
             self.production_cost_analysis = \
                     self.create_production_cost_analysis()
-            self.save()
+            with without_check_access():
+                self.save()
 
         cost = self.production_cost_analysis
         production.production_cost_analysis = self.production_cost_analysis
-        production.save()
+        with without_check_access():
+            production.save()
         CostAnalysis.create_cost_moves([cost])
         return production
 
